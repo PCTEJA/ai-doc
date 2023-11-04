@@ -1,0 +1,354 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    background-image: url('bgcover1.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+}
+
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+h1 {
+    text-align: center;
+    color: #ffffff;
+}
+
+form#docForm, form#manualForm {
+    max-width: 400px;
+    margin: 50px auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+form#docForm input[type="text"], form#manualForm input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+form#docForm button[type="submit"], form#manualForm button[type="submit"], #generateBtn{
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background-color: #875cb8;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+form#docForm button[type="submit"]:hover, form#manualForm button[type="submit"]:hover, #generateBtn:hover{
+    background-color: #6e4cae;
+}
+
+.loader {
+    border: 5px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 5px solid #3498db;
+    width: 50px;
+    height: 50px;
+    -webkit-animation: spin 2s linear infinite;
+    /* Safari */
+    animation: spin 2s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+/* Existing styles... */
+
+/* Navbar Styles */
+.navbar {
+    background-color: transparent !important;
+    /* Make navbar background transparent */
+    box-shadow: none;
+}
+
+.navbar-brand,
+.nav-link {
+    color: #fbfbfb !important;
+    /* Change the color if needed */
+}
+
+.nav-link:hover, .navbar-brand:hover{
+    color: #ffffff !important;
+    /* Change for hover effect */
+    background-color: rgba(14, 227, 188, 0.056);
+    /* Slight background on hover */
+}
+
+/* Centering the "GIT-DOC" text */
+.centered-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 4em;
+    /* Large text size */
+    color: #ffffff;
+    font-weight: bold;
+    text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.5);
+}
+
+/* Typing effect styles */
+@keyframes typing {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes blink-caret {
+
+    from,
+    to {
+        border-color: transparent;
+    }
+
+    50% {
+        border-color: #ffffff;
+    }
+}
+
+.typing-effect {
+    font-size: 1.2em;
+    color: #fffefe;
+    border-right: 2px solid;
+    white-space: nowrap;
+    overflow: hidden;
+    display: inline-block;
+    animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+/* Existing styles... */
+
+/* Jumping GIT logo animation */
+@keyframes jump {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateY(0);
+    }
+
+    40% {
+        transform: translateY(-30px);
+    }
+
+    60% {
+        transform: translateY(-15px);
+    }
+}
+
+.git-logo {
+    width: 100px;
+    /* Adjust size as necessary */
+    animation: jump 2s ease-in-out infinite;
+}
+
+.scrollable-list {
+    max-height: 500px;
+    /* Adjust the height as needed */
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+/* Add this to your style.css */
+#user_manual {
+    max-width: 100%;
+    max-height: 500px;
+    overflow: auto;
+    word-wrap: break-word;
+}
+
+/* style.css */
+#user_manual {
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    font-size: 16px;
+    /* Adjust as needed for readability */
+    line-height: 1.6;
+    color: #333;
+    /* Dark grey text color for readability */
+    background-color: #f8f8f8c6;
+    /* Light background to contrast the text */
+    padding: 20px;
+    border-radius: 4px;
+    /* Optional: Adds rounded corners to the container */
+    max-width: 800px;
+    /* Max width of the text container */
+    margin: auto;
+    /* Center the container */
+    overflow-wrap: break-word;
+    /* Prevents long words from breaking the layout */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+    /* Optional: Adds a subtle shadow for depth */
+}
+
+/* If you want to style markdown headings, lists, etc., add more styles */
+#user_manual h1,
+#user_manual h2,
+#user_manual h3 {
+    color: #0056b3;
+    /* Example color for headings */
+}
+
+#user_manual p {
+    margin-bottom: 1em;
+}
+
+#user_manual a {
+    color: #d64b3a;
+    /* Example color for links */
+    text-decoration: none;
+}
+
+#user_manual a:hover {
+    text-decoration: underline;
+}
+
+#user_manual code {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #eef;
+    padding: 2px 4px;
+    border-radius: 4px;
+}
+
+#user_manual pre {
+    background-color: #eee;
+    padding: 10px;
+    overflow-x: auto;
+    /* Makes code blocks scrollable horizontally */
+}
+
+
+/* Add this to your style.css */
+#documentation {
+    max-width: 100%;
+    max-height: 500px;
+    overflow: auto;
+    word-wrap: break-word;
+}
+
+/* style.css */
+#documentation {
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    font-size: 16px;
+    /* Adjust as needed for readability */
+    line-height: 1.6;
+    color: #333;
+    /* Dark grey text color for readability */
+    background-color: #f8f8f8bf;
+    /* Light background to contrast the text */
+    padding: 20px;
+    border-radius: 4px;
+    /* Optional: Adds rounded corners to the container */
+    max-width: 800px;
+    /* Max width of the text container */
+    margin: auto;
+    /* Center the container */
+    overflow-wrap: break-word;
+    /* Prevents long words from breaking the layout */
+    box-shadow: 0 2px 4px rgba(191, 183, 183, 0.7);
+    /* Optional: Adds a subtle shadow for depth */
+}
+
+/* If you want to style markdown headings, lists, etc., add more styles */
+#documentation h1,
+#documentation h2,
+#documentation h3 {
+    color: #0056b3;
+    /* Example color for headings */
+}
+
+#documentation p {
+    margin-bottom: 1em;
+}
+
+#documentation a {
+    color: #d64b3a;
+    /* Example color for links */
+    text-decoration: none;
+}
+
+#documentation a:hover {
+    text-decoration: underline;
+}
+
+#documentation code {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #eef;
+    padding: 2px 4px;
+    border-radius: 4px;
+}
+
+#documentation pre {
+    background-color: #eee;
+    padding: 10px;
+    overflow-x: auto;
+   
+}
+
+
+#generateBtn {
+    background-color: #007bff;
+    /* Bootstrap primary button color */
+    color: white;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    /* Reducing the maximum width so it doesn't stretch too wide */
+    max-width: 200px;
+    /* Block level with max width for better control */
+    display: block;
+    /* Centering the button */
+    margin: 20px auto;
+}
+
+/* Hover effect for the button */
+#generateBtn:hover {
+    background-color: #0056b3;
+    /* A darker shade for hover effect */
+}
+
+/* Adjust the container to accommodate the new button size */
+#documentation {
+    /* All previous styles remain unchanged */
+    margin-bottom: 40px;
+}

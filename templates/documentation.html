@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Your Repositories{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>Generated Documentation <a href="{{ url_for('download_documentation') }}">Download</a></h1> 
+        <div id="documentation">
+            <pre>{{ documentation | safe }}</pre>
+        </div>
+        <form method="get" action="/download-doc">
+            <button type="submit" id="generateBtn">Download Documentation</button>
+        </form>
+    </div>
+{% endblock %}
