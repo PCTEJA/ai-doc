@@ -1,0 +1,7 @@
+flask
+flask-session
+gitpython
+markdown
+openai
+requests
+secrets

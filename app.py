@@ -9,17 +9,20 @@ import git
 import openai
 import tempfile
 import markdown
+from flask_session import Session
 
 # starting flask baby
 app = Flask(__name__)
+sess = Session()
 
-api_key = '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'
+
+api_key = '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'
 app.config['SECRET_KEY'] = secrets.token_hex(16)
 app.config['GITHUB_CLIENT_ID'] = '66c0b9f99e76f95951f1'
 app.config['GITHUB_CLIENT_SECRET'] = '955dc458fd868d8157717e658c8fb6dc99f1c427'
 app.config['SESSION_TYPE'] = 'filesystem'
 # session(app)
-
+sess.init_app(app)
 
 @app.route('/login-with-github')
 def login_with_github():
