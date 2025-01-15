@@ -4,3 +4,4 @@ gitpython
 markdown
 openai
 requests
+gunicorn
