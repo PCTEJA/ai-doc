@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Your Repositories{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>Generated User Manual <a href="{{ url_for('download_user') }}">Download</a></h1>
+        <div id="user_manual">
+            {{ user_manual | safe }}
+        </div>
+            <a href="{{ url_for('download_user') }}"><button type="submit" id="generateBtn">Download User Manual</button></a>
+    </div>
+{% endblock %}
+

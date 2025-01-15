@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}DOC-GEN{% endblock %}
+
+{% block content %}
+<div class="centered-text">
+    <img src="{{ url_for('static', filename='git-logo1.png') }}" alt="GIT Logo" class="git-logo">
+    P C TEJA - DOC-GEN
+    <a class="navbar-brand" href="{{ url_for('index') }}">Get Started</a>
+    <br>
+    <div class="typing-effect">
+        Programs Document Generator...
+    </div>
+</div>
+{% endblock %}

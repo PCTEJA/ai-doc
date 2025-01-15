@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+
+{% block title %}Your Repositories{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="mb-4">
+        <h1>Your GitHub Repositories</h1>
+        <span class="badge badge-secondary">{{ total_count }} Repositories</span>
+    </div>
+
+<div class="scrollable-list">
+<ul class="list-group">
+    {% for repo in repos %}
+    <li class="list-group-item">
+        <div class="d-flex justify-content-between align-items-center">
+            <div class="mr-3">
+                <a href="{{ repo.html_url }}" class="repo-name" target="_blank">{{ repo.name }}</a>
+            </div>
+            <div>
+                <span class="badge badge-info">{{ repo.most_used_language }}</span>
+            </div>
+            <div>
+                <form action="/generate-doc" method="post" class="repoForm d-inline-block mr-2">
+                    <input type="hidden" name="github_link" value="{{ repo.html_url }}">
+                    <button type="submit" name="action" value="documentation"
+                        class="btn btn-primary generateBtn">Generate Documentation</button>
+                </form>
+                <form action="/generate-manual" method="post" class="repoForm d-inline-block">
+                    <input type="hidden" name="github_link" value="{{ repo.html_url }}">
+                    <button type="submit" name="action" value="user_manual"
+                        class="btn btn-secondary generateBtn">Generate User Manual</button>
+                </form>
+            </div>
+        </div>
+    </li>
+    {% endfor %}
+</ul>
+</div>
+
+            <!-- <div class="mb-4">
+                <h2>Languages</h2>
+                {% for lang in language_stats %}
+                <div class="mb-2">
+                    <span>{{ lang.name }}</span>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: {{ lang.percentage }}%"
+                            aria-valuenow="{{ lang.percentage }}" aria-valuemin="0" aria-valuemax="100">{{ lang.percentage }}%
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div> -->
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('.repoForm').on('submit', function (e) {
+            e.preventDefault();
+            var form = $(this);
+            var btns = form.find('.generateBtn');
+            btns.prop('disabled', true);
+
+            var formAction = form.attr('action');
+
+            $.ajax({
+                type: "POST",
+                url: formAction,
+                data: form.serialize(),
+                success: function (data) {
+                    btns.prop('disabled', false);
+                    if (data.redirect_url) {
+                        window.location.href = data.redirect_url;
+                    } else {
+                        // Handle no redirect case, maybe show a message?
+                    }
+                },
+                error: function () {
+                    btns.prop('disabled', false);
+                    alert("Error generating document.");
+                }
+            });
+        });
+    });
+</script>
+{% endblock %}

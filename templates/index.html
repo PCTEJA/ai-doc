@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}Documentation Generator{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>GitHub Repository Documentation Generator</h1>
+    <form id="docForm" action="/generate-doc" method="post">
+        <input type="text" name="github_link" placeholder="Enter GitHub Repository URL" required>
+        <button type="submit" id="generateDocBtn">Generate Documentation</button>
+    </form>
+    <p></p>
+    <form id="manualForm" action="/generate-manual" method="post">
+        <input type="text" name="github_link" placeholder="Enter GitHub Repository URL" required>
+        <button type="submit" id="generateManualBtn">Generate User Manual</button>
+    </form>
+    <div id="loading" style="display:none;">
+        <div class="loader"></div>
+        Generating, please wait...
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('#docForm, #manualForm').submit(function (e) {
+            e.preventDefault();
+            var form = $(this);
+            var url = form.attr('action');
+
+            form.find('button[type="submit"]').prop('disabled', true);
+            $('#loading').show();
+
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: form.serialize(),
+                success: function (data) {
+                    form.find('button[type="submit"]').prop('disabled', false);
+                    $('#loading').hide();
+                    $('body').html(data);
+                    window.location.href = data.redirect_url;
+                },
+                error: function () {
+                    form.find('button[type="submit"]').prop('disabled', false);
+                    $('#loading').hide();
+                    alert("Error generating documentation.");
+                }
+            });
+        });
+    });
+</script>
+</body>
+
+</html>
+{% endblock %}

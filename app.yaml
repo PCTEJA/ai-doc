@@ -1,0 +1,7 @@
+runtime: python310
+entrypoint: gunicorn -b :$PORT main:app
+
+env_variables:
+  GITHUB_CLIENT_ID: "66c0b9f99e76f95951f1"
+  GITHUB_CLIENT_SECRET: "955dc458fd868d8157717e658c8fb6dc99f1c427"
+  OPENAI_API_KEY: "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"
